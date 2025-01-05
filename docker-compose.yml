@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"  # Map port 5000 dari container ke port 5000 pada host
+    volumes:
+      - .:/app  # Mount direktori saat ini ke /app dalam container
+      - ./data.db:/app/data.db  # Persist database SQLite
+    environment:
+      FLASK_ENV: development
+    container_name: flask_app
